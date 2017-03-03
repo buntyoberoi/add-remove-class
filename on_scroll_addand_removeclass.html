@@ -1,75 +1,77 @@
-
+<!DOCTYPE html>
 <html>
 <head>
-  <title></title>
-  <style type="text/css">
-.sub-menu-parent { position: relative; }
+	<title> on scroll add and remove class</title>
+	<style type="text/css">
+		body {
+			height: 100%;
+			width: 100%;
+			background-color:lightblue;
+		}
 
-.sub-menu { 
-  visibility: hidden; /* hides sub-menu */
-  opacity: 0;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  transform: translateY(-2em);
-  z-index: -1;
-  transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
-}
+		.wrapper {
+			width:800px;
+			height:1500px;
+			padding:15px;
+			margin:0px auto;
+		}
 
-.sub-menu-parent:hover .sub-menu {
-  visibility: visible; /* shows sub-menu */
-  opacity: 1;
-  z-index: 1;
-  transform: translateY(0%);
-  transition-delay: 0s, 0.3s, 0.3s; 
-}
+		#dynamic {
+			width:500px;
+			border:dashed white;
+			border-radius:10%;
+			padding:3em;
+			font-family:helvetica, arial;
+			font-weight:bold;
+			font-size:1.5em;
+			font-height:1.5em;
+			margin:0px auto;
+		}
 
-/* presentational */
-body { padding: 2%; font: 18px/1.4 sans-serif; }
+		.newClass {
+			border:none;
+			background-color:orange;
+			animation-name: example;
+			animation-duration: 4s;
+			animation-iteration-count: 3;
+			animation-timing-function: ease-out; 
+		}
 
-nav a { color: #E00; display: block; padding: 0.5em 1em; text-decoration: none; }
-nav a:hover { color: #F55; }
-nav ul,
-nav ul li { list-style-type: none; padding: 0; margin: 0; }
-
-nav > ul { background: #EEE; text-align: center; }
-nav > ul > li { display: inline-block; border-left: solid 1px #aaa; }
-nav > ul > li:first-child { border-left: none; }
-
-.sub-menu {
-  background: #DDD;
-}
-  </style>
+		@keyframes example {
+			10% {background-color: red;}
+			20% {background-color: yellow;}
+			30% {background-color: green;}
+			40% {background-color: pink;}
+			50% {background-color: purple;}
+			60% {background-color: orange;}
+			70% {background-color: yellow;}
+			80% {background-color: pink;}
+			90% {background-color: red;}
+			100% {background-color: yellow;}
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(window).scroll(function(){
+				if ($(this).scrollTop() > 50) {
+					$('#dynamic').addClass('newClass');
+				} else {
+					$('#dynamic').removeClass('newClass');
+				}
+			});
+		}); 
+	</script>
 </head>
 <body>
-<nav>
-   <ul>
-     <li class="sub-menu-parent">
-       <a href="#">Menu Item 1</a>
-       <ul class="sub-menu">
-         <li><a href="#">Sub Item 1</a></li>
-         <li><a href="#">Sub Item 2</a></li>
-         <li><a href="#">Sub Item 3</a></li>
-         <li><a href="#">Sub Item 4</a></li>
-       </ul>
-     </li>
-     <li class="sub-menu-parent"><a href="#">Menu Item 2</a>
-       <ul class="sub-menu">
-         <li><a href="#">Sub Item 1</a></li>
-         <li><a href="#">Sub Item 2</a></li>
-         <li><a href="#">Sub Item 3</a></li>
-         <li><a href="#">Sub Item 4</a></li>
-         <li><a href="#">Sub Item 5</a></li>
-         <li><a href="#">Sub Item 6</a></li>
-       </ul>
-     </li>
-     <li class="sub-menu-parent"><a href="#">Menu Item 3</a>
-       <ul class="sub-menu">
-         <li><a href="#">Sub Item 1</a></li>
-         <li><a href="#">Sub Item 2</a></li>
-       </ul></li>
-   </ul>
- </nav>
+	<div class="wrapper">
+		<div id="dynamic">
+			This allows you to add and/or remove classes after the user has scrolled down a certain amount in a page. <br><br><br><br><br><br><br><br><br>In this case, fill background with orange after scrolling 50px down.
+			WP Lorem allows you to add New posts with lorem text and images - By one click Only ! Adding content Straight from Your Content Editor AND MORE !<br>
+			This allows you to add and/or remove classes after the user has scrolled down a certain amount in a page. <br><br><br><br><br><br><br><br><br>In this case, fill background with orange after scrolling 50px down.
+			WP Lorem allows you to add New posts with lorem text and images - By one click Only ! Adding content Straight from Your Content Editor AND MORE !<br>
+
+		</div>
+	</div>
 </body>
 </html>
